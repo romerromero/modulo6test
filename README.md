@@ -2,23 +2,11 @@
 
 ## Project setup
 ```
-npm install
-```
+RUTA PRINCIPAL: 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+/cuentas
 
-### Compiles and minifies for production
 ```
-npm run build
-```
+# json-server --watch cuentas.json
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -7,6 +7,6 @@ RUTA PRINCIPAL:
 /cuentas
 
 ```
-# json-server --watch cuentas.json
+ejecutar json-server --watch cuentas.json
 
 

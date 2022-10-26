@@ -10,6 +10,8 @@ import CrearMovimiento from "../views/Movimientos/CrearMovimiento.vue";
 import EditarMovimiento from "../views/Movimientos/EditarMovimiento.vue";
 import EliminarMovimiento from "../views/Movimientos/EliminarMovimiento.vue";
 
+import RegistrarMovimiento from "../views/Movimientos/RegistrarMovimiento.vue";
+
 
 
 
@@ -34,7 +36,6 @@ const routes = [{
         component: EliminarCuenta
     },
 
-
     {
         name: "movimientosCuenta",
         path: "/movimientosCuenta/:id_cuenta",
@@ -54,6 +55,14 @@ const routes = [{
         name: "eliminarMovimiento",
         path: "/eliminarMovimiento/:id_cuenta/:id_movimiento",
         component: EliminarMovimiento
+    },
+
+
+
+    {
+        name: "princial",
+        path: "/",
+        component: RegistrarMovimiento
     },
 
 

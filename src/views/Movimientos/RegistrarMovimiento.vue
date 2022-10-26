@@ -1,36 +1,49 @@
 <template>
 
     <div class="container">
-        <br><br>
+        <br>
         <center>
-            <h4>REGISTRAR NUEVO MOVIMIENTO</h4>
-            {{ fecha }}
+            <h5>NUEVO MOVIMIENTO</h5>
         </center>
         <br>
         <form v-on:submit.prevent="guardarMovimiento()">
             <div class="row">
+
+
                 <div class="col-md-3">
+
+                    <div class="mb-3">
+                      
+                        <select class="form-control" v-model="id_cuenta"
+                            v-on:change="changeMovimientoFiltro()">
+                            <option v-for="cuenta in cuentas" :key="cuenta" :value="cuenta.id">{{cuenta.nombre}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" v-model="tipo" :value="1" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">
-                            EGRESO
+                            Engreso
                         </label>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" v-model="tipo" :value="2" id="flexRadioDefault2">
                         <label class="form-check-label" for="flexRadioDefault2">
-                            INGRESO
+                            Ingreso
                         </label>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-3">
 
                     <div class="form-check">
                         <input class="form-check-input" type="radio" v-model="tipo" :value="3" id="flexRadioDefault3">
                         <label class="form-check-label" for="flexRadioDefault3">
-                            TRANSFERENCIA
+                            Transferencia
                         </label>
                     </div>
 
@@ -39,22 +52,19 @@
                 <br><br>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
                         <textarea required class="form-control" v-model="concepto" id="exampleFormControlTextarea1"
-                            rows="2"></textarea>
+                            rows="2" placeholder="Concepto"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Cantidad </label>
                         <input type="number" class="form-control" v-model="cantidad" v-on:change="changeSubTotal()"
                             id="exampleFormControlInput1" placeholder="Cantidad" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Precio unitario </label>
                         <input type="number" class="form-control" v-model="precio_unitario"
-                            v-on:change="changeSubTotal()" id="exampleFormControlInput1" placeholder="Precio Unitario" required>
+                            v-on:change="changeSubTotal()" id="exampleFormControlInput1" placeholder="Precio Unitario"
+                            required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Sub total </label>
                         <input type="number" class="form-control" v-model="sub_total" id="exampleFormControlInput1"
                             placeholder="Sub Total" required>
                     </div>
@@ -62,9 +72,11 @@
 
                     <div class="mb-3">
                         <button type="button" class="btn btn-success btn-sm"
-                            v-on:click="irMovimientos()">Cancelar</button>
+                            v-on:click="irMovimientos()">Ver Lista</button>
                         <button class="btn btn-primary btn-sm">Guardar</button>
+
                     </div>
+
 
                 </div>
             </div>
@@ -85,14 +97,16 @@ export default {
     name: "CrearMovimiento",
     data: function () {
         return {
-            id_cuenta: '',
+            id_cuenta: '1',
             tipo: 1,
             concepto: '',
-            cantidad: 1,
-            precio_unitario: 0,
-            sub_total: 0,
+            cantidad: '',
+            precio_unitario: '',
+            sub_total: '',
             fecha: '',
-            lugar: ''
+            lugar: '',
+
+            cuentas:[]
         };
     },
     components: {
@@ -100,16 +114,22 @@ export default {
     },
     created() {
         this.getFechaHoraActual();
+        this.getCuentas();
     },
 
     methods: {
-        crearMovimiento() {
-            this.$router.push("/crearMovimiento");
+
+
+        getCuentas() {
+            axios.get('http://localhost:3000/cuentas').then(response => {
+                this.cuentas = response.data;
+            });
         },
+
         getFechaHoraActual() {
             let fecha = new Date().toLocaleDateString();
             let hora = new Date().toLocaleTimeString();
-            this.fecha = fecha +' '+ hora;
+            this.fecha = fecha + ' ' + hora;
         },
         changeSubTotal() {
 
@@ -129,9 +149,18 @@ export default {
             }).then(response => {
                 response
 
+                this.id_cuenta= '1';
+                this.tipo= 1;
+                this.concepto= '';
+                this.cantidad= '';
+                this.precio_unitario= '';
+                this.sub_total= '';
+                this.fecha= '';
+                this.lugar= '';
 
-                this.$router.push("/movimientosCuenta/" + this.id_cuenta);
-  
+
+                this.$router.push("/");
+
             });
 
 
@@ -147,7 +176,7 @@ export default {
     },
     mounted() {
 
-        this.id_cuenta = this.$route.params.id_cuenta;
+
 
     }
 

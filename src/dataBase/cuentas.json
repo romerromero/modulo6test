@@ -1,0 +1,79 @@
+{
+  "cuentas": [
+    {
+      "nombre": "Cuenta Soli",
+      "descripcion": "Cuenta Soli",
+      "saldo": 2850,
+      "id": 1
+    },
+    {
+      "nombre": "Cuenta Tigo money",
+      "descripcion": "Billeter movil tigo money",
+      "saldo": 40,
+      "id": 2
+    },
+    {
+      "nombre": "cuenta banco fie",
+      "descripcion": "banco fie",
+      "saldo": 500,
+      "id": 3
+    }
+  ],
+  "movimientos": [
+    {
+      "id_cuenta": "1",
+      "tipo": 2,
+      "concepto": "sueldo",
+      "cantidad": 1,
+      "precio_unitario": 3000,
+      "sub_total": 3000,
+      "fecha": "25/10/202222:15:19",
+      "lugar": "",
+      "id": 1
+    },
+    {
+      "id_cuenta": "1",
+      "tipo": 1,
+      "concepto": "mochila",
+      "cantidad": 1,
+      "precio_unitario": 120,
+      "sub_total": 120,
+      "fecha": "25/10/202222:15:44",
+      "lugar": "",
+      "id": 2
+    },
+    {
+      "id_cuenta": "1",
+      "tipo": 1,
+      "concepto": "almuerzo",
+      "cantidad": 2,
+      "precio_unitario": 15,
+      "sub_total": 30,
+      "fecha": "25/10/2022 22:26:40",
+      "lugar": "",
+      "id": 3
+    },
+    {
+      "id_cuenta": "2",
+      "tipo": 2,
+      "concepto": "trabajos varios",
+      "cantidad": 1,
+      "precio_unitario": 40,
+      "sub_total": 40,
+      "fecha": "25/10/2022 23:02:29",
+      "lugar": "",
+      "id": 4
+    },
+    {
+      "id_cuenta": "3",
+      "tipo": 2,
+      "concepto": "venta de codigo fuente",
+      "cantidad": 1,
+      "precio_unitario": 500,
+      "sub_total": 500,
+      "fecha": "25/10/2022 23:02:48",
+      "lugar": "",
+      "id": 5
+    }
+  ]
+}

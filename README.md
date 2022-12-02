@@ -1,4 +1,4 @@
-# control-gastos
+# control-gastos app en vue
 
 ## Project setup
 ```

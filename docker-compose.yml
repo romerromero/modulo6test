@@ -12,25 +12,24 @@ services:
     command: npm run serve
     ports:
       - "8086:8086"
-#     depends_on:
-#       - mybasedatos
-#     networks:
-#       conexion_networks:
-#         aliases:
-#           - conexion_bd
+    depends_on:
+      - mybasedatos
+    networks:
+      conexion_networks:
+        aliases:
+          - conexion_bd
           
-         
-#   mybasedatos:
-#     hostname: mydb
-#     build: . 
-#     command: Set-ExecutionPolicy -Scope CurrentUser unrestricted
-#     command: json-server -H 0.0.0.0 -p 3000 --watch database/db.json
-#     ports:
-#       - "5000:5000"
-#     networks:
-#      conexion_networks:
-#        aliases:
-#         - conexion2_bd
+  mybasedatos:
+    hostname: mydb
+    build: . 
+    command: Set-ExecutionPolicy -Scope CurrentUser unrestricted
+    command: json-server -H 0.0.0.0 -p 3000 --watch src/dataBase/cuentas.json
+    ports:
+      - "3000:3000"
+    networks:
+     conexion_networks:
+       aliases:
+        - conexion2_bd
      
 networks:
    conexion_networks:

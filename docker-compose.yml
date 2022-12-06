@@ -8,7 +8,7 @@ services:
       process.env.VUE_APP_RUTA_API: "http://0.0.0.0:3000"
       
     links:
-      - "mydb:json-server"  
+      - "mybasedatos:json-server"  
     command: npm run serve
     ports:
       - "8086:8086"
@@ -20,7 +20,7 @@ services:
           - conexion_bd
           
   mybasedatos:
-    hostname: mydb
+    hostname: mybasedatos
     build: . 
     command: Set-ExecutionPolicy -Scope CurrentUser unrestricted
     command: json-server -H 0.0.0.0 -p 3000 --watch src/dataBase/cuentas.json

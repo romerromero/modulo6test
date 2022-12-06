@@ -23,7 +23,7 @@ services:
     hostname: mybasedatos
     build: . 
     command: Set-ExecutionPolicy -Scope CurrentUser unrestricted
-    command: json-server -H 0.0.0.0 -p 3000 --watch /src/dataBase/cuentas.json
+    command: json-server -H 0.0.0.0 -p 3000 --watch dataBase/cuentas.json
     ports:
       - "3000:3000"
     networks:
